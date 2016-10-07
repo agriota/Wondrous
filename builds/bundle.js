@@ -23200,7 +23200,7 @@
 	          e.preventDefault();
 	          dispatch({ type: "CALC" });
 	        } },
-	      'Calculate'
+	      'Calculate!'
 	    )
 	  );
 	};
@@ -23276,8 +23276,8 @@
 	    var firstText = "Chance of " + label + ": ";
 	    var secondText = "Chance of better shuffle: ";
 	    return _react2.default.createElement(
-	      "span",
-	      { className: "odssBox" },
+	      "div",
+	      { className: "oddsBox" },
 	      _react2.default.createElement(
 	        "div",
 	        { className: "oddsLine" },

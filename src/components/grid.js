@@ -20,7 +20,7 @@ let Grid = ({dispatch}) => {
           e.preventDefault()
           dispatch({type: "CALC"})
         }}>
-          Calculate
+          Calculate!
       </button>
     </div>
   )

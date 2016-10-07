@@ -1,25 +1,56 @@
+body {
+  background-image: url('../assets/khloe.png');
+}
+
+.calc {
+  width: 100%;
+}
+
 .grid {
   width: 100%;
   display: block;
 }
 
-.button {
+button {
   display: block;
+  width: 10vw;
+  margin-left: 15vw;
+  height: 5vw;
+  font-family: sans-serif;
+  font-size: 26px;
+  background: none;
+  border: 1px solid #55FF55;
+  color: white;
+  border-radius: 7px;
+  
+  -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+button:active {
+  background: #aaa;
 }
 
 .cell {
   width: 21%;
   height: 100px;
-  border: 1px solid black;
+  border: 1px solid white;
   display: inline-flex;
+  opacity: 0.5;
 }
 
 .on {
-  background: blue;
+  background: cyan;
 }
 
 .leftPane { 
-  width: 50%;
+  width: 49%;
   display: inline-flex;
 }
 
@@ -28,21 +59,35 @@
 }
 
 .rightPane {
-  width: 50%;
-  display: inline-block;
+  width: 49%;
+  display: inline-table;
 }
 
-.span {
+.oddsBox {
+  margin-top: 30px;
   display: block;
+  font-family: sans-serif;
+  font-size: 26px;
+  -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
 }
 
 .oddsLine {
   display: block;
 }
 .oddstext {
-  display: inline;
+  display: inline-block;
+  width: 50%;
 }
 
 .oddsVal {
+  font-family: monospace;
   display: inline;
+  color: #55FF55;
 }

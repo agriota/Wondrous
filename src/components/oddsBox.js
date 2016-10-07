@@ -6,7 +6,7 @@ const OddsBox = createClass({
     let firstText = "Chance of " + label + ": "
     let secondText = "Chance of better shuffle: "
     return(
-      <span className="odssBox">
+      <div className="oddsBox">
         <div className="oddsLine">
           <div className="oddstext">{firstText}</div>
           <div className="oddsVal">{odds[0]}</div>
@@ -15,7 +15,7 @@ const OddsBox = createClass({
           <div className="oddstext">{secondText}</div>
           <div className="oddsVal">{odds[1]}</div>
         </div>
-      </span>
+      </div>
     )
   }
 })
