@@ -1,0 +1,48 @@
+.grid {
+  width: 100%;
+  display: block;
+}
+
+.button {
+  display: block;
+}
+
+.cell {
+  width: 21%;
+  height: 100px;
+  border: 1px solid black;
+  display: inline-flex;
+}
+
+.on {
+  background: blue;
+}
+
+.leftPane { 
+  width: 50%;
+  display: inline-flex;
+}
+
+.leftPane > div {
+  width: 100%;
+}
+
+.rightPane {
+  width: 50%;
+  display: inline-block;
+}
+
+.span {
+  display: block;
+}
+
+.oddsLine {
+  display: block;
+}
+.oddstext {
+  display: inline;
+}
+
+.oddsVal {
+  display: inline;
+}
