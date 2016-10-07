@@ -62,7 +62,7 @@
 
 	var _calcView2 = _interopRequireDefault(_calcView);
 
-	var _underscore = __webpack_require__(200);
+	var _underscore = __webpack_require__(199);
 
 	var _lines = __webpack_require__(201);
 
@@ -23093,7 +23093,7 @@
 
 	var _grid2 = _interopRequireDefault(_grid);
 
-	var _oddsBox = __webpack_require__(199);
+	var _oddsBox = __webpack_require__(200);
 
 	var _oddsBox2 = _interopRequireDefault(_oddsBox);
 
@@ -23165,47 +23165,63 @@
 
 	var _cell2 = _interopRequireDefault(_cell);
 
+	var _underscore = __webpack_require__(199);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Grid = function Grid(_ref) {
-	  var dispatch = _ref.dispatch;
-
-	  var cellNodes = [];
-
-	  var _loop = function _loop(i) {
-	    cellNodes.push(function () {
-	      return _react2.default.createElement(
-	        _cell2.default,
-	        { id: i, key: i },
-	        ' '
-	      );
-	    }());
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	  return {
+	    count: (0, _underscore.filter)(state.active, function (x) {
+	      return x;
+	    }).length
 	  };
-
-	  for (var i = 0; i < 16; i++) {
-	    _loop(i);
-	  }
-
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'grid' },
-	      cellNodes
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { onClick: function onClick(e) {
-	          e.preventDefault();
-	          dispatch({ type: "CALC" });
-	        } },
-	      'Calculate!'
-	    )
-	  );
 	};
 
-	exports.default = (0, _reactRedux.connect)()(Grid);
+	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+	  return {
+	    handleClick: function handleClick(e) {
+	      e.preventDefault();
+	      dispatch({ type: "CALC" });
+	    }
+	  };
+	};
+
+	var Grid = (0, _react.createClass)({
+	  render: function render() {
+	    var btext = this.props.count == 7 ? "Calculate!" : "Select 7";
+	    var cellNodes = [];
+
+	    var _loop = function _loop(i) {
+	      cellNodes.push(function () {
+	        return _react2.default.createElement(
+	          _cell2.default,
+	          { id: i, key: i },
+	          ' '
+	        );
+	      }());
+	    };
+
+	    for (var i = 0; i < 16; i++) {
+	      _loop(i);
+	    }
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'grid' },
+	        cellNodes
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { onClick: this.props.handleClick },
+	        btext
+	      )
+	    );
+	  }
+	});
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Grid);
 
 /***/ },
 /* 198 */
@@ -23253,67 +23269,6 @@
 
 /***/ },
 /* 199 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var OddsBox = (0, _react.createClass)({
-	  render: function render() {
-	    var _props = this.props;
-	    var odds = _props.odds;
-	    var label = _props.label;
-
-	    var firstText = "Chance of " + label + ": ";
-	    var secondText = "Chance of better shuffle: ";
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "oddsBox" },
-	      _react2.default.createElement(
-	        "div",
-	        { className: "oddsLine" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "oddstext" },
-	          firstText
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "oddsVal" },
-	          odds[0]
-	        )
-	      ),
-	      _react2.default.createElement(
-	        "div",
-	        { className: "oddsLine" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "oddstext" },
-	          secondText
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "oddsVal" },
-	          odds[1]
-	        )
-	      )
-	    );
-	  }
-	});
-
-	exports.default = OddsBox;
-
-/***/ },
-/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -24867,6 +24822,67 @@
 
 
 /***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var OddsBox = (0, _react.createClass)({
+	  render: function render() {
+	    var _props = this.props;
+	    var odds = _props.odds;
+	    var label = _props.label;
+
+	    var firstText = "Chance of " + label + ": ";
+	    var secondText = "Chance of better shuffle: ";
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "oddsBox" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "oddsLine" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "oddstext" },
+	          firstText
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "oddsVal" },
+	          odds[0]
+	        )
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "oddsLine" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "oddstext" },
+	          secondText
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "oddsVal" },
+	          odds[1]
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = OddsBox;
+
+/***/ },
 /* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -24877,7 +24893,7 @@
 	});
 	exports.getOdds = undefined;
 
-	var _underscore = __webpack_require__(200);
+	var _underscore = __webpack_require__(199);
 
 	var _constants = __webpack_require__(1);
 
